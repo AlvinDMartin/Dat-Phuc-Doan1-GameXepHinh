@@ -42,7 +42,7 @@ namespace Picture_Puzzle_1._0
         private void Addnewimage(ArrayList images)
         {
             int i = 0;
-            int[] arr = { 0, 1, 2, 3, 4, 5, 6, 7 };
+            int[] arr = {  0, 1, 2, 3, 4, 5, 6, 7};
             arr = suffle(arr);
 
             foreach(Button b in pnGame.Controls)
