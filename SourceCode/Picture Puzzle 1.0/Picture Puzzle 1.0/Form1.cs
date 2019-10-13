@@ -18,8 +18,8 @@ namespace Picture_Puzzle_1._0
 
         public Form1()
         {
-            EmptyPoint.X = 180;
-            EmptyPoint.Y = 180;
+            EmptyPoint.X = 240;
+            EmptyPoint.Y = 240;
             InitializeComponent();
         }
 
@@ -107,22 +107,22 @@ namespace Picture_Puzzle_1._0
                 EmptyPoint = s;
             }
 
-            //if (EmptyPoint.X == 180 && EmptyPoint.Y == 180)
-            //    Check();
-            
-        }
+			if (EmptyPoint.X == 240 && EmptyPoint.Y == 240)
+				Check();
 
-        //private void Check()
-        //{
-        //    int dem = 0, index;
-        //    foreach(Button btn in pnGame.Controls)
-        //    {
-        //        index = (btn.Location.Y / 120) * 3 + btn.Location.X / 120;
-        //        if ((Image)images[index] == btn.Image)
-        //            dem++;
-        //    }
-        //    if (dem == 8)
-        //        MessageBox.Show("You Win !");
-        //}
-    }
+		}
+
+		private void Check()
+		{
+			int dem = 0, index;
+			foreach (Button btn in pnGame.Controls)
+			{
+				index = (btn.Location.Y / 120) * 3 + btn.Location.X / 120;
+				if ((Image)images[index] == btn.Image)
+					dem++;
+			}
+			if (dem == 8)
+				MessageBox.Show("You Win !");
+		}
+	}
 }
