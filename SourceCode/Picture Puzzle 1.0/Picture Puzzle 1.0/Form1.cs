@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 
+//using Picture_Puzzle_1._0.MyClass;
+
 namespace Picture_Puzzle_1._0
 {
     public partial class Form1 : Form
     {
+        ArrayList Images = new ArrayList();
         Point EmptyPoint;
-        ArrayList images = new ArrayList();
+        
 
         public Form1()
         {
@@ -30,24 +33,26 @@ namespace Picture_Puzzle_1._0
 
         private void btnstartG_Click(object sender, EventArgs e)
         {
+            Image orginal;
+            orginal = Properties.Resources.anime;
+            pnsample.BackgroundImage = orginal;
             foreach (Button b in pnGame.Controls)
                 b.Enabled = true;
-            Image orginal = Properties.Resources.anime;
 
             cropImageTomages(orginal, 360, 360);
 
-            Addnewimage(images);
+            Addnewimage(Images);
         }
 
         private void Addnewimage(ArrayList images)
         {
             int i = 0;
-            int[] arr = {  0, 1, 2, 3, 4, 5, 6, 7};
+            int[] arr = { 0, 1, 2, 3, 4, 5, 6, 7 };
             arr = suffle(arr);
 
-            foreach(Button b in pnGame.Controls)
+            foreach (Button b in pnGame.Controls)
             {
-                if(i<arr.Length)
+                if (i < arr.Length)
                 {
                     b.Image = (Image)images[arr[i]];
                     i++;
@@ -71,22 +76,22 @@ namespace Picture_Puzzle_1._0
             gra.Dispose();
 
             int movr = 0, movd = 0;
-            for(int k = 0; k<8; k++)
+            for (int k = 0; k < 8; k++)
             {
                 Bitmap piece = new Bitmap(120, 120);
 
                 for (int i = 0; i < 120; i++)
                     for (int j = 0; j < 120; j++)
-                        piece.SetPixel(i, j, bmp.GetPixel(i + movr,j + movd));
-                images.Add(piece);
+                        piece.SetPixel(i, j, bmp.GetPixel(i + movr, j + movd));
+                Images.Add(piece);
 
                 movr += 120;
-                if(movr == 360)
+                if (movr == 360)
                 {
                     movr = 0;
                     movd += 120;
                 }
-            }   
+            }
 
         }
 
@@ -97,28 +102,28 @@ namespace Picture_Puzzle_1._0
 
         private void Moveimage(Button btn)
         {
-            if(((btn.Location.X==EmptyPoint.X-120||btn.Location.X==EmptyPoint.X+120)
-                &&btn.Location.Y==EmptyPoint.Y)
-               ||(btn.Location.Y == EmptyPoint.Y - 120 || btn.Location.Y == EmptyPoint.Y + 120)
-                &&btn.Location.X == EmptyPoint.X)
+            if (((btn.Location.X == EmptyPoint.X - 120 || btn.Location.X == EmptyPoint.X + 120)
+                && btn.Location.Y == EmptyPoint.Y)
+               || (btn.Location.Y == EmptyPoint.Y - 120 || btn.Location.Y == EmptyPoint.Y + 120)
+                && btn.Location.X == EmptyPoint.X)
             {
                 Point s = btn.Location;
                 btn.Location = EmptyPoint;
                 EmptyPoint = s;
             }
 
-			if (EmptyPoint.X == 240 && EmptyPoint.Y == 240)
-				Check();
+            if (EmptyPoint.X == 240 && EmptyPoint.Y == 240)
+                Check();
 
-		}
+        }
 
-		private void Check()
+        private void Check()
 		{
 			int dem = 0, index;
 			foreach (Button btn in pnGame.Controls)
 			{
 				index = (btn.Location.Y / 120) * 3 + btn.Location.X / 120;
-				if ((Image)images[index] == btn.Image)
+				if ((Image)Images[index] == btn.Image)
 					dem++;
 			}
 			if (dem == 8)

@@ -83,5 +83,20 @@
   <ItemGroup>
     <None Include="Resources\anime.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgroundGame.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\br_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\br_control.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgroundGame2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MyClass\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
