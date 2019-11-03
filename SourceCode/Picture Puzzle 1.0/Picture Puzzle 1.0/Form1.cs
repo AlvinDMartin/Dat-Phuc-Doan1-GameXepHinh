@@ -9,58 +9,112 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 
-//using Picture_Puzzle_1._0.MyClass;
+using Picture_Puzzle_1._0.MyClass;
 
 namespace Picture_Puzzle_1._0
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        ArrayList Images = new ArrayList();
-        Point EmptyPoint;
-        
-
-        public Form1()
+        MainGame myGame = new MainGame();
+        public Main()
         {
-            EmptyPoint.X = 240;
-            EmptyPoint.Y = 240;
+          
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Refresh();
         }
 
         private void btnstartG_Click(object sender, EventArgs e)
         {
+            pnGame.Controls.Clear();
+            showlv.Text = "";
+
+            //load size
+            switch (Convert.ToInt32(Box1.Text.ToString()))
+            {
+                case 0:
+                    {
+                        DialogResult error1 = MessageBox.Show("Chọn Level trước khi chơi nào. (>_<)", "Bình tĩnh", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        if (error1 == DialogResult.OK)
+                        {
+                            Box1.Focus();
+                            Refresh();
+                        }
+                    }
+                    break;
+                case 1:
+                    {
+                        myGame.setSize(3);
+                        showlv.Text = "3x3";
+                    }
+                    break;
+                case 2:
+                    {
+                        myGame.setSize(4);
+                        showlv.Text = "4x4";
+                    }
+                    break;
+                case 3:
+                    {
+                        myGame.setSize(5);
+                        showlv.Text = "5x5";
+                    }
+                    break;
+
+            
+            }
+
+            myGame.Createbutton();
+            Addnewbutton();
+
+            //load image from FORM
             Image orginal;
             orginal = Properties.Resources.anime;
             pnsample.BackgroundImage = orginal;
-            foreach (Button b in pnGame.Controls)
-                b.Enabled = true;
 
-            cropImageTomages(orginal, 360, 360);
+            //set image for game
+            myGame.setImage(orginal);
 
-            Addnewimage(Images);
+            
+            foreach (Button bt in pnGame.Controls)
+                bt.Enabled = true;
+
+            myGame.cropImageTomages(pnGame.Width, pnGame.Height);
+            Addnewimage();
         }
 
-        private void Addnewimage(ArrayList images)
+        private void Addnewimage()
         {
             int i = 0;
-            int[] arr = { 0, 1, 2, 3, 4, 5, 6, 7 };
-            arr = suffle(arr);
+            int[] arr = new int[(myGame.getSize() * myGame.getSize()) -1];
+            for (int j = 0; j < (myGame.getSize() * myGame.getSize()) -1; j++)
+            {
+                arr[j] = j;
+            }
+            arr = ran(arr);
 
             foreach (Button b in pnGame.Controls)
             {
                 if (i < arr.Length)
                 {
-                    b.Image = (Image)images[arr[i]];
+                    b.Image = (Image)myGame.getImages()[arr[i]];                    
                     i++;
                 }
             }
         }
-
-        private int[] suffle(int[] arr)
+        private void Addnewbutton()
+        {
+            int[] arrr = new int[myGame.getSize()* myGame.getSize()];
+            for (int i = 0; i < myGame.getSize() * myGame.getSize(); i++)
+            {
+                arrr[i] = i;
+                pnGame.Controls.Add((Button)myGame.getButton()[arrr[i]]);
+            }
+        }
+        private int[] ran(int[] arr)
         {
             Random rand = new Random();
             arr = arr.OrderBy(x => rand.Next()).ToArray();
@@ -68,66 +122,35 @@ namespace Picture_Puzzle_1._0
             return arr;
         }
 
-        private void cropImageTomages(Image orginal, int w, int h)
-        {
-            Bitmap bmp = new Bitmap(w, h);
-            Graphics gra = Graphics.FromImage(bmp);
-            gra.DrawImage(orginal, 0, 0, w, h);
-            gra.Dispose();
-
-            int movr = 0, movd = 0;
-            for (int k = 0; k < 8; k++)
-            {
-                Bitmap piece = new Bitmap(120, 120);
-
-                for (int i = 0; i < 120; i++)
-                    for (int j = 0; j < 120; j++)
-                        piece.SetPixel(i, j, bmp.GetPixel(i + movr, j + movd));
-                Images.Add(piece);
-
-                movr += 120;
-                if (movr == 360)
-                {
-                    movr = 0;
-                    movd += 120;
-                }
-            }
-
-        }
-
         private void Form1_Click(object sender, EventArgs e)
         {
-            Moveimage((Button)sender);
-;        }
-
-        private void Moveimage(Button btn)
-        {
-            if (((btn.Location.X == EmptyPoint.X - 120 || btn.Location.X == EmptyPoint.X + 120)
-                && btn.Location.Y == EmptyPoint.Y)
-               || (btn.Location.Y == EmptyPoint.Y - 120 || btn.Location.Y == EmptyPoint.Y + 120)
-                && btn.Location.X == EmptyPoint.X)
-            {
-                Point s = btn.Location;
-                btn.Location = EmptyPoint;
-                EmptyPoint = s;
-            }
-
-            if (EmptyPoint.X == 240 && EmptyPoint.Y == 240)
-                Check();
-
+            //Button btn = sender as Button;
         }
 
         private void Check()
 		{
-			int dem = 0, index;
-			foreach (Button btn in pnGame.Controls)
-			{
-				index = (btn.Location.Y / 120) * 3 + btn.Location.X / 120;
-				if ((Image)Images[index] == btn.Image)
-					dem++;
-			}
-			if (dem == 8)
-				MessageBox.Show("You Win !");
+			//int dem = 0, index;
+			//foreach (Button btn in pnGame.Controls)
+			//{
+			//	index = (btn.Location.Y / 120) * 3 + btn.Location.X / 120;
+			//	if ((Image)cr.Images[index] == btn.Image)
+			//		dem++;
+			//}
+			//if (dem == 8)
+			//	MessageBox.Show("You Win !");
 		}
-	}
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Kết thúc Chương Trình", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //no code
+            }
+        }
+    }
 }

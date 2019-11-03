@@ -52,6 +52,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyClass\MainGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyClass\Move_image.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -95,8 +99,6 @@
   <ItemGroup>
     <None Include="Resources\backgroundGame2.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MyClass\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
