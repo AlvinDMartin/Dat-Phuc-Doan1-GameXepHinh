@@ -17,10 +17,10 @@ namespace Picture_Puzzle_1._0.MyClass
     
     public partial class MainGame : Form
     {
-        public ArrayList m_ButtonList = new ArrayList();
-        public ArrayList m_ImageList = new ArrayList();
+        ArrayList m_ButtonList = new ArrayList();
+        ArrayList m_ImageList = new ArrayList();
         int m_SizeMap = 3;// default = 3x3
-        public Image m_Image;
+        Image m_Image;
         
 
         public void cropImageTomages( int w, int h)
@@ -79,10 +79,6 @@ namespace Picture_Puzzle_1._0.MyClass
             }
         }
 
-        public void InitGame() { 
-            //cropImageTomages(...)
-            //Createbutton(...)
-        }
 
         public void setImage(Image img)
         {

@@ -15,11 +15,14 @@ namespace Picture_Puzzle_1._0
 {
     public partial class Main : Form
     {
+        int countline = 0;
         MainGame myGame = new MainGame();
         public Main()
         {
-          
             InitializeComponent();
+
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,6 +34,9 @@ namespace Picture_Puzzle_1._0
         {
             pnGame.Controls.Clear();
             showlv.Text = "";
+            labC.Text = "";
+            countline = 0;
+            this.timer1.Start();
 
             //load size
             switch (Convert.ToInt32(Box1.Text.ToString()))
@@ -77,10 +83,13 @@ namespace Picture_Puzzle_1._0
 
             //set image for game
             myGame.setImage(orginal);
-
             
             foreach (Button bt in pnGame.Controls)
+            {
                 bt.Enabled = true;
+                bt.Click += new EventHandler(MovePlay);
+            }
+                
 
             myGame.cropImageTomages(pnGame.Width, pnGame.Height);
             Addnewimage();
@@ -151,6 +160,39 @@ namespace Picture_Puzzle_1._0
             {
                 //no code
             }
+        }
+        public void MovePlay(Object sender, EventArgs e)
+        {
+            
+            Button btn = (Button)sender;
+            if (btn.Image == null)
+                return;
+            Button emply_btn = null;
+            foreach (Button bt in this.pnGame.Controls)
+            {
+                if (bt.Image == null)
+                {
+                    emply_btn = bt;
+                    break;
+                }
+            }
+            if (btn.TabIndex == (emply_btn.TabIndex - 1) ||
+                btn.TabIndex == (emply_btn.TabIndex - myGame.getSize()) ||
+                btn.TabIndex == (emply_btn.TabIndex + 1) ||
+                btn.TabIndex == (emply_btn.TabIndex + myGame.getSize()))
+            {
+                emply_btn.BackColor = Color.White;
+                btn.BackColor = Color.White;
+                emply_btn.Image = btn.Image;
+                btn.Image = null;
+                countline++;
+                labC.Text = Convert.ToString(countline);
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.proBar.Increment(1);
         }
     }
 }

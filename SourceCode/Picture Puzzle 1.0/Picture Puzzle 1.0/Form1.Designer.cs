@@ -28,23 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnGame = new System.Windows.Forms.Panel();
             this.pncontrol = new System.Windows.Forms.Panel();
             this.exit = new System.Windows.Forms.Button();
             this.btnstartG = new System.Windows.Forms.Button();
             this.pnsample = new System.Windows.Forms.PictureBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.proBar = new System.Windows.Forms.ProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labC = new System.Windows.Forms.Label();
+            this.labcount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ScoreG = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.showlv = new System.Windows.Forms.Label();
             this.Box1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pncontrol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnsample)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -114,12 +118,12 @@
             this.pnsample.TabIndex = 2;
             this.pnsample.TabStop = false;
             // 
-            // progressBar1
+            // proBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(325, 544);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(360, 23);
-            this.progressBar1.TabIndex = 3;
+            this.proBar.Location = new System.Drawing.Point(325, 544);
+            this.proBar.Name = "proBar";
+            this.proBar.Size = new System.Drawing.Size(360, 23);
+            this.proBar.TabIndex = 3;
             // 
             // menuStrip1
             // 
@@ -154,6 +158,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labC);
+            this.panel1.Controls.Add(this.labcount);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.ScoreG);
             this.panel1.Location = new System.Drawing.Point(16, 178);
@@ -161,11 +167,31 @@
             this.panel1.Size = new System.Drawing.Size(100, 98);
             this.panel1.TabIndex = 7;
             // 
+            // labC
+            // 
+            this.labC.AutoSize = true;
+            this.labC.Font = new System.Drawing.Font("Nightporter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labC.Location = new System.Drawing.Point(71, 69);
+            this.labC.Name = "labC";
+            this.labC.Size = new System.Drawing.Size(16, 17);
+            this.labC.TabIndex = 6;
+            this.labC.Text = "0";
+            // 
+            // labcount
+            // 
+            this.labcount.AutoSize = true;
+            this.labcount.Font = new System.Drawing.Font("Nife Fiter", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labcount.Location = new System.Drawing.Point(7, 74);
+            this.labcount.Name = "labcount";
+            this.labcount.Size = new System.Drawing.Size(61, 12);
+            this.labcount.TabIndex = 5;
+            this.labcount.Text = "count :";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Nife Fiter", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(34, 43);
+            this.label2.Location = new System.Drawing.Point(32, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 26);
             this.label2.TabIndex = 4;
@@ -225,6 +251,10 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Level";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,7 +263,7 @@
             this.ClientSize = new System.Drawing.Size(697, 579);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.proBar);
             this.Controls.Add(this.pnsample);
             this.Controls.Add(this.pncontrol);
             this.Controls.Add(this.pnGame);
@@ -262,7 +292,7 @@
         private System.Windows.Forms.Panel pnGame;
         private System.Windows.Forms.Panel pncontrol;
         private System.Windows.Forms.PictureBox pnsample;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar proBar;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
@@ -276,6 +306,9 @@
         private System.Windows.Forms.ComboBox Box1;
         private System.Windows.Forms.Label showlv;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labC;
+        private System.Windows.Forms.Label labcount;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

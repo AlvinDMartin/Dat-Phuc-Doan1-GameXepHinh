@@ -55,7 +55,6 @@
     <Compile Include="MyClass\MainGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyClass\Move_image.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
