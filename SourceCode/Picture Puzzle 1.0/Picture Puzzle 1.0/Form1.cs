@@ -97,6 +97,7 @@ namespace Picture_Puzzle_1._0
 
         private void Addnewimage()
         {
+            
             int i = 0;
             int[] arr = new int[(myGame.getSize() * myGame.getSize()) -1];
             for (int j = 0; j < (myGame.getSize() * myGame.getSize()) -1; j++)
@@ -104,24 +105,29 @@ namespace Picture_Puzzle_1._0
                 arr[j] = j;
             }
             arr = ran(arr);
-
             foreach (Button b in pnGame.Controls)
             {
+                
                 if (i < arr.Length)
-                {
-                    b.Image = (Image)myGame.getImages()[arr[i]];                    
+                {                    
+                    b.Image = (Image)myGame.getImages()[arr[i]];
                     i++;
                 }
+                
             }
+            
         }
         private void Addnewbutton()
         {
             int[] arrr = new int[myGame.getSize()* myGame.getSize()];
             for (int i = 0; i < myGame.getSize() * myGame.getSize(); i++)
             {
+                
                 arrr[i] = i;
                 pnGame.Controls.Add((Button)myGame.getButton()[arrr[i]]);
+
             }
+
         }
         private int[] ran(int[] arr)
         {
@@ -138,16 +144,14 @@ namespace Picture_Puzzle_1._0
 
         private void Check()
 		{
-			//int dem = 0, index;
-			//foreach (Button btn in pnGame.Controls)
-			//{
-			//	index = (btn.Location.Y / 120) * 3 + btn.Location.X / 120;
-			//	if ((Image)cr.Images[index] == btn.Image)
-			//		dem++;
-			//}
-			//if (dem == 8)
-			//	MessageBox.Show("You Win !");
-		}
+            int dem = 0;
+            foreach (Button btn in pnGame.Controls)
+            {
+                
+            }
+            if (dem == (myGame.getSize()* myGame.getSize()) -1)
+                MessageBox.Show("You Win !");
+        }
 
         private void exit_Click(object sender, EventArgs e)
         {
@@ -188,6 +192,7 @@ namespace Picture_Puzzle_1._0
                 countline++;
                 labC.Text = Convert.ToString(countline);
             }
+            Check();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

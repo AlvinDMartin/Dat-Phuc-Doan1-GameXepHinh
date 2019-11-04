@@ -67,7 +67,7 @@ namespace Picture_Puzzle_1._0.MyClass
                     Button btn = new Button();
                     btn.Name = string.Format("", i, j);
                     btn.Size = new Size(360 / m_SizeMap, 360 / m_SizeMap);
-                    btn.TabIndex = count;
+                    btn.TabIndex = count;                    
                     btn.Top = top;
                     btn.Left = left;
                     left += 360 / m_SizeMap;
