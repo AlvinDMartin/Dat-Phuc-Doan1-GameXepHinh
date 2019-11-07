@@ -109,7 +109,8 @@ namespace Picture_Puzzle_1._0
                 if (i < arr.Length)
                 {                    
                     b.Image = (Image)myGame.getImages()[arr[i]];
-                    i++;
+					b.Text = arr[i].ToString();
+					i++;
                 }
                 
             }
@@ -140,16 +141,17 @@ namespace Picture_Puzzle_1._0
             //Button btn = sender as Button;
         }
 
-        private void Check()
+        private bool Check()
 		{
-            int dem = 0;
-            foreach (Button btn in pnGame.Controls)
-            {
-                
-            }
-            if (dem == (myGame.getSize()* myGame.getSize()) -1)
-                MessageBox.Show("You Win !");
-        }
+			foreach (Button btn in pnGame.Controls)
+			{
+				if (btn.TabIndex.ToString() != btn.Text)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
 
         private void exit_Click(object sender, EventArgs e)
         {
@@ -178,22 +180,31 @@ namespace Picture_Puzzle_1._0
                     break;
                 }
             }
-            if (btn.TabIndex == (emply_btn.TabIndex - 1) ||
-                btn.TabIndex == (emply_btn.TabIndex - myGame.getSize()) ||
-                btn.TabIndex == (emply_btn.TabIndex + 1) ||
-                btn.TabIndex == (emply_btn.TabIndex + myGame.getSize()))
-            {
-                emply_btn.BackColor = Color.White;
-                btn.BackColor = Color.White;
-                emply_btn.Image = btn.Image;
-                btn.Image = null;
-                countline++;
-                labC.Text = Convert.ToString(countline);
-            }
-            Check();
-        }
+			if (btn.TabIndex == (emply_btn.TabIndex - 1) ||
+				btn.TabIndex == (emply_btn.TabIndex - myGame.getSize()) ||
+				btn.TabIndex == (emply_btn.TabIndex + 1) ||
+				btn.TabIndex == (emply_btn.TabIndex + myGame.getSize()))
+			{
+				swap(emply_btn, btn);
+			}
+			if (Check() == true)
+			{
+				timer1.Stop();
+				MessageBox.Show("Bạn đã chiến thắng ",
+					"Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+		}
+		public void swap(Button a, Button b)
+		{
+			string temp = a.Text;
+			a.Text = b.Text;
+			b.Text = temp;
+			Image i = a.Image;
+			a.Image = b.Image;
+			b.Image = i;
+		}
 
-        private void timer1_Tick(object sender, EventArgs e)
+		private void timer1_Tick(object sender, EventArgs e)
         {
             this.proBar.Increment(1);
         }
