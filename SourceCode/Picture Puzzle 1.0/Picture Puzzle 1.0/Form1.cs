@@ -15,14 +15,11 @@ namespace Picture_Puzzle_1._0
 {
     public partial class Main : Form
     {
-        int countline = 0;
+        int countline = 0; //
         MainGame myGame = new MainGame();
         public Main()
         {
             InitializeComponent();
-
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,7 +31,7 @@ namespace Picture_Puzzle_1._0
         {
             pnGame.Controls.Clear();
             showlv.Text = "";
-            labC.Text = "";
+            labC.Text = "0"; // update late
             countline = 0;
             this.timer1.Start();
 
@@ -69,10 +66,7 @@ namespace Picture_Puzzle_1._0
                         showlv.Text = "5x5";
                     }
                     break;
-
-            
             }
-
             myGame.Createbutton();
             Addnewbutton();
 
@@ -89,8 +83,6 @@ namespace Picture_Puzzle_1._0
                 bt.Enabled = true;
                 bt.Click += new EventHandler(MovePlay);
             }
-                
-
             myGame.cropImageTomages(pnGame.Width, pnGame.Height);
             Addnewimage();
         }
@@ -104,37 +96,30 @@ namespace Picture_Puzzle_1._0
             {
                 arr[j] = j;
             }
-            arr = ran(arr);
+			arr = ran(arr);
             foreach (Button b in pnGame.Controls)
             {
-                
                 if (i < arr.Length)
-                {                    
+                {
                     b.Image = (Image)myGame.getImages()[arr[i]];
 					b.Text = arr[i].ToString();
-					i++;
+                    i++;
                 }
-                
             }
-            
-        }
-        private void Addnewbutton()
+		}
+		private void Addnewbutton()
         {
             int[] arrr = new int[myGame.getSize()* myGame.getSize()];
-            for (int i = 0; i < myGame.getSize() * myGame.getSize(); i++)
+			for (int i = 0; i < myGame.getSize() * myGame.getSize(); i++)
             {
-                
                 arrr[i] = i;
-                pnGame.Controls.Add((Button)myGame.getButton()[arrr[i]]);
-
+				pnGame.Controls.Add((Button)myGame.getButton()[arrr[i]]);
             }
-
         }
         private int[] ran(int[] arr)
         {
             Random rand = new Random();
             arr = arr.OrderBy(x => rand.Next()).ToArray();
-
             return arr;
         }
 
@@ -145,7 +130,7 @@ namespace Picture_Puzzle_1._0
 
         private bool Check()
 		{
-			foreach (Button btn in pnGame.Controls)
+			foreach (Button btn in pnGame.Controls) 
 			{
 				if (btn.TabIndex.ToString() != btn.Text)
 				{
@@ -153,9 +138,8 @@ namespace Picture_Puzzle_1._0
 				}
 			}
 			return true;
-		}
-
-        private void exit_Click(object sender, EventArgs e)
+        }
+		private void exit_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Kết thúc Chương Trình", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
@@ -182,19 +166,28 @@ namespace Picture_Puzzle_1._0
                     break;
                 }
             }
-			if (btn.TabIndex == (emply_btn.TabIndex - 1) ||
-				btn.TabIndex == (emply_btn.TabIndex - myGame.getSize()) ||
-				btn.TabIndex == (emply_btn.TabIndex + 1) ||
-				btn.TabIndex == (emply_btn.TabIndex + myGame.getSize()))
-			{
+            if (btn.TabIndex == (emply_btn.TabIndex - 1) ||
+                btn.TabIndex == (emply_btn.TabIndex - myGame.getSize()) ||
+                btn.TabIndex == (emply_btn.TabIndex + 1) ||
+                btn.TabIndex == (emply_btn.TabIndex + myGame.getSize()))
+            {
 				swap(emply_btn, btn);
+				countline++;								// update late
+				labC.Text = Convert.ToString(countline);	// update late
 			}
 			if (Check() == true)
 			{
 				timer1.Stop();
 				MessageBox.Show("Bạn đã chiến thắng ",
 					"Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				frmWiner frmWin = new frmWiner(labC.Text, Box1.Text);	// update late
+				frmWin.ShowDialog();									// update late
 			}
+		}
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+			this.proBar.Increment(1);
 		}
 		public void swap(Button a, Button b)
 		{
@@ -206,9 +199,15 @@ namespace Picture_Puzzle_1._0
 			b.Image = i;
 		}
 
-		private void timer1_Tick(object sender, EventArgs e)
-        {
-            this.proBar.Increment(1);
-        }
-    }
+		private void panel1_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
+		private void datatable_Click(object sender, EventArgs e)
+		{
+			HighScore highScore = new HighScore();
+			highScore.ShowDialog();
+		}
+	}
 }

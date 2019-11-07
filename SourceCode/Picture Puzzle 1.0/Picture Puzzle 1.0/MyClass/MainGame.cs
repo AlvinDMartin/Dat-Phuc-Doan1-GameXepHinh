@@ -41,7 +41,11 @@ namespace Picture_Puzzle_1._0.MyClass
 
                 for (int i = 0; i < w / m_SizeMap; i++)
                     for (int j = 0; j < h / m_SizeMap; j++)
-                        img.SetPixel(i, j, bmp.GetPixel(i + movr, j + movd));
+					{
+						img.SetPixel(i, j, bmp.GetPixel(i + movr, j + movd));
+					}
+                        
+						
                 m_ImageList.Add(img);
 
                 movr += w / m_SizeMap;
@@ -55,7 +59,7 @@ namespace Picture_Puzzle_1._0.MyClass
         }
         public void Createbutton()
         {
-            m_ButtonList.Clear();
+			m_ButtonList.Clear();
             int top = 0;
             int count = 0;
             for (int i = 0; i < m_SizeMap; i++)
@@ -63,9 +67,8 @@ namespace Picture_Puzzle_1._0.MyClass
                 int left = 0;
                 for (int j = 0; j < m_SizeMap; j++)
                 {
-                   
                     Button btn = new Button();
-                    btn.Name = string.Format("", i, j);
+                    btn.Name = string.Format(count.ToString(), i, j);
                     btn.Size = new Size(360 / m_SizeMap, 360 / m_SizeMap);
                     btn.TabIndex = count;
 					btn.Text = count.ToString();
@@ -73,9 +76,8 @@ namespace Picture_Puzzle_1._0.MyClass
 					btn.Top = top;
                     btn.Left = left;
                     left += 360 / m_SizeMap;
-                    count++;
+					count++;
                     m_ButtonList.Add(btn);
-
                 }
                 top += 360 / m_SizeMap;
             }
