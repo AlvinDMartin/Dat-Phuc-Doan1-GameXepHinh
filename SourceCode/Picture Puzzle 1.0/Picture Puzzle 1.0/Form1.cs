@@ -15,24 +15,31 @@ namespace Picture_Puzzle_1._0
 {
     public partial class Main : Form
     {
-        int countline = 0;
+        int countline ;
+
         MainGame myGame = new MainGame();
         public Main()
         {
             InitializeComponent();
-
+            timer2.Enabled = false;
+            timer3.Enabled = false;
+            timer4.Enabled = false;
+            proBar.Enabled = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             Refresh();
+
         }
 
         private void btnstartG_Click(object sender, EventArgs e)
         {
+            runtext.Text = "";
             pnGame.Controls.Clear();
             showlv.Text = "";
             labC.Text = "";
+            proBar.Enabled = true ;
             countline = 0;
             this.timer1.Start();
 
@@ -41,7 +48,7 @@ namespace Picture_Puzzle_1._0
             {
                 case 0:
                     {
-                        DialogResult error1 = MessageBox.Show("Chọn Level trước khi chơi nào. (>_<)", "Bình tĩnh", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        DialogResult error1 = MessageBox.Show("Bạn chưa chọn level chơi, mặc định là 3x3 nhé ", "Bình tĩnh", MessageBoxButtons.OK, MessageBoxIcon.None);
                         if (error1 == DialogResult.OK)
                         {
                             Box1.Focus();
@@ -192,6 +199,10 @@ namespace Picture_Puzzle_1._0
 				timer1.Stop();
 				MessageBox.Show("Bạn đã chiến thắng ",
 					"Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                timer2.Enabled = true;
+                timer3.Enabled = true;
+                timer4.Enabled = true;
+                runtext.Text = "You Win !!";
 			}
 		}
 		public void swap(Button a, Button b)
@@ -207,6 +218,30 @@ namespace Picture_Puzzle_1._0
 		private void timer1_Tick(object sender, EventArgs e)
         {
             this.proBar.Increment(1);
+        }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            this.runtext.ForeColor = Color.Red;
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            this.runtext.ForeColor = Color.Blue;
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            this.runtext.ForeColor = Color.Yellow;
+        }
+
+        private void endgame_Click(object sender, EventArgs e)
+        {
+            timer2.Enabled = true;
+            timer3.Enabled = true;
+            timer4.Enabled = true;
+            runtext.Text = "You Lose !!";
+            MessageBox.Show("Bạn đã chịu thua rồi, Click ''Start Game'' để bất đầu lại nào, cố lên ",
+                    "Ôi Không", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

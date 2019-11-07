@@ -49,6 +49,11 @@
             this.Box1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.runtext = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.endgame = new System.Windows.Forms.Button();
             this.pncontrol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnsample)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -69,6 +74,7 @@
             // 
             this.pncontrol.BackgroundImage = global::Picture_Puzzle_1._0.Properties.Resources.br_control;
             this.pncontrol.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pncontrol.Controls.Add(this.endgame);
             this.pncontrol.Controls.Add(this.exit);
             this.pncontrol.Controls.Add(this.btnstartG);
             this.pncontrol.Location = new System.Drawing.Point(13, 384);
@@ -100,9 +106,9 @@
             this.btnstartG.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnstartG.Font = new System.Drawing.Font("Goofball", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnstartG.ForeColor = System.Drawing.Color.Red;
-            this.btnstartG.Location = new System.Drawing.Point(3, 120);
+            this.btnstartG.Location = new System.Drawing.Point(77, 22);
             this.btnstartG.Name = "btnstartG";
-            this.btnstartG.Size = new System.Drawing.Size(150, 60);
+            this.btnstartG.Size = new System.Drawing.Size(150, 92);
             this.btnstartG.TabIndex = 0;
             this.btnstartG.Text = "Start Game";
             this.btnstartG.UseVisualStyleBackColor = true;
@@ -256,12 +262,53 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // runtext
+            // 
+            this.runtext.AutoSize = true;
+            this.runtext.BackColor = System.Drawing.Color.Transparent;
+            this.runtext.Font = new System.Drawing.Font("Moonstar", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.runtext.Location = new System.Drawing.Point(405, 126);
+            this.runtext.Name = "runtext";
+            this.runtext.Size = new System.Drawing.Size(0, 50);
+            this.runtext.TabIndex = 9;
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 50;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Interval = 60;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // timer4
+            // 
+            this.timer4.Interval = 70;
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
+            // endgame
+            // 
+            this.endgame.BackgroundImage = global::Picture_Puzzle_1._0.Properties.Resources.br_button;
+            this.endgame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.endgame.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.endgame.Font = new System.Drawing.Font("Goofball", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endgame.ForeColor = System.Drawing.Color.Red;
+            this.endgame.Location = new System.Drawing.Point(3, 120);
+            this.endgame.Name = "endgame";
+            this.endgame.Size = new System.Drawing.Size(150, 60);
+            this.endgame.TabIndex = 2;
+            this.endgame.Text = "End Game";
+            this.endgame.UseVisualStyleBackColor = true;
+            this.endgame.Click += new System.EventHandler(this.endgame_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Picture_Puzzle_1._0.Properties.Resources.backgroundGame2;
             this.ClientSize = new System.Drawing.Size(697, 579);
+            this.Controls.Add(this.runtext);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.proBar);
@@ -310,6 +357,11 @@
         private System.Windows.Forms.Label labC;
         private System.Windows.Forms.Label labcount;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label runtext;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Timer timer4;
+        private System.Windows.Forms.Button endgame;
     }
 }
 
