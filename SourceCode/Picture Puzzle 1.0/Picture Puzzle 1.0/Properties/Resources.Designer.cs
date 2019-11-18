@@ -73,9 +73,9 @@ namespace Picture_Puzzle_1._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap backgroundGame {
+        internal static System.Drawing.Bitmap anime2 {
             get {
-                object obj = ResourceManager.GetObject("backgroundGame", resourceCulture);
+                object obj = ResourceManager.GetObject("anime2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,39 @@ namespace Picture_Puzzle_1._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap backgroundGame2 {
+        internal static System.Drawing.Bitmap anime3 {
             get {
-                object obj = ResourceManager.GetObject("backgroundGame2", resourceCulture);
+                object obj = ResourceManager.GetObject("anime3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackGround_Control2 {
+            get {
+                object obj = ResourceManager.GetObject("BackGround-Control2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap background_Fill {
+            get {
+                object obj = ResourceManager.GetObject("background-Fill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backgroundGame3 {
+            get {
+                object obj = ResourceManager.GetObject("backgroundGame3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +133,9 @@ namespace Picture_Puzzle_1._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap br_control {
+        internal static System.Drawing.Bitmap br22 {
             get {
-                object obj = ResourceManager.GetObject("br_control", resourceCulture);
+                object obj = ResourceManager.GetObject("br22", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

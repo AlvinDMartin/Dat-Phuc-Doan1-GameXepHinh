@@ -15,51 +15,47 @@ namespace Picture_Puzzle_1._0
 {
     public partial class Main : Form
     {
-<<<<<<< HEAD
-        int countline = 0; //
-=======
-        int countline ;
-
->>>>>>> 6a82d866c1c9dee28469fd499277a088b7141967
+        int countline = 0;
         MainGame myGame = new MainGame();
+        Image orginal;
+        string extention = ".jpg";
+        
         public Main()
         {
             InitializeComponent();
-<<<<<<< HEAD
-=======
-            timer2.Enabled = false;
-            timer3.Enabled = false;
-            timer4.Enabled = false;
-            proBar.Enabled = false;
->>>>>>> 6a82d866c1c9dee28469fd499277a088b7141967
+            loadimageGame();
+
+        }
+
+        private void cbimage_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+
+            if (cb.SelectedValue != null)
+            {
+                Bitmap bm = new Bitmap(Application.StartupPath + "\\Resources\\" + cb.SelectedValue.ToString() + extention);
+                orginal = bm;
+            }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             Refresh();
-
         }
-
         private void btnstartG_Click(object sender, EventArgs e)
         {
-            runtext.Text = "";
             pnGame.Controls.Clear();
             showlv.Text = "";
-<<<<<<< HEAD
-            labC.Text = "0"; // update late
-=======
-            labC.Text = "";
-            proBar.Enabled = true ;
->>>>>>> 6a82d866c1c9dee28469fd499277a088b7141967
+            labC.Text = "0";
             countline = 0;
             this.timer1.Start();
-
             //load size
             switch (Convert.ToInt32(Box1.Text.ToString()))
             {
                 case 0:
                     {
-                        DialogResult error1 = MessageBox.Show("Bạn chưa chọn level chơi, mặc định là 3x3 nhé ", "Bình tĩnh", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        DialogResult error1 = MessageBox.Show("Chọn Level trước khi chơi nào. (>_<)", "Bình tĩnh", MessageBoxButtons.OK, MessageBoxIcon.None);
                         if (error1 == DialogResult.OK)
                         {
                             Box1.Focus();
@@ -90,8 +86,7 @@ namespace Picture_Puzzle_1._0
             Addnewbutton();
 
             //load image from FORM
-            Image orginal;
-            orginal = Properties.Resources.anime;
+
             pnsample.BackgroundImage = orginal;
 
             //set image for game
@@ -199,15 +194,11 @@ namespace Picture_Puzzle_1._0
 				timer1.Stop();
 				MessageBox.Show("Bạn đã chiến thắng ",
 					"Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-<<<<<<< HEAD
-				frmWiner frmWin = new frmWiner(labC.Text, Box1.Text);	// update late
-				frmWin.ShowDialog();									// update late
-=======
-                timer2.Enabled = true;
-                timer3.Enabled = true;
-                timer4.Enabled = true;
-                runtext.Text = "You Win !!";
->>>>>>> 6a82d866c1c9dee28469fd499277a088b7141967
+				frmWiner frmWin = new frmWiner();	// update late
+                frmWin.CT(labC.Text, Box1.Text);
+                //labC.Text, Box1.Text
+
+                frmWin.ShowDialog();// update late
 			}
 		}
 
@@ -225,7 +216,6 @@ namespace Picture_Puzzle_1._0
 			b.Image = i;
 		}
 
-<<<<<<< HEAD
 		private void panel1_Paint(object sender, PaintEventArgs e)
 		{
 
@@ -236,36 +226,11 @@ namespace Picture_Puzzle_1._0
 			HighScore highScore = new HighScore();
 			highScore.ShowDialog();
 		}
+        public void loadimageGame()
+        {
+            List<string> ListImage = new List<string>() { "anime", "anime2", "anime3" };
+
+            cbimage.DataSource = ListImage;
+        }
 	}
-=======
-		private void timer1_Tick(object sender, EventArgs e)
-        {
-            this.proBar.Increment(1);
-        }
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            this.runtext.ForeColor = Color.Red;
-        }
-
-        private void timer3_Tick(object sender, EventArgs e)
-        {
-            this.runtext.ForeColor = Color.Blue;
-        }
-
-        private void timer4_Tick(object sender, EventArgs e)
-        {
-            this.runtext.ForeColor = Color.Yellow;
-        }
-
-        private void endgame_Click(object sender, EventArgs e)
-        {
-            timer2.Enabled = true;
-            timer3.Enabled = true;
-            timer4.Enabled = true;
-            runtext.Text = "You Lose !!";
-            MessageBox.Show("Bạn đã chịu thua rồi, Click ''Start Game'' để bất đầu lại nào, cố lên ",
-                    "Ôi Không", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-    }
->>>>>>> 6a82d866c1c9dee28469fd499277a088b7141967
 }

@@ -108,5 +108,16 @@ namespace Picture_Puzzle_1._0.MyClass
             return m_ImageList;
         }
 
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // MainGame
+            // 
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Name = "MainGame";
+            this.ResumeLayout(false);
+
+        }
     }
 }

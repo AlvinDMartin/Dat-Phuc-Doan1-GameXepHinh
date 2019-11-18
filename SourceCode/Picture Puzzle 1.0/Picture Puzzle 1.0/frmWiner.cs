@@ -15,22 +15,26 @@ namespace Picture_Puzzle_1._0
 	{
 		// chuan bi cac doi tuong
 		// Chuỗi kết nối
-		string strConnectionString = @"Data Source=DESKTOP-4KL0P5K\SQLEXPRESS;" +
+		string strConnectionString = @"Data Source=ALVIND-MARTIN-P\SQLEXPRESS;" +
 		"Initial Catalog=GamePuzzle;" +
 		"Integrated Security=True";
 		// Đối tượng kết nối
 		SqlConnection conn = null;
 		// Khai báo biến kiểm tra việc Thêm dữ liệu.
 		bool Them = false;
-		public frmWiner(string count, string level)
+        public void CT(string count, string level)
+        {
+            txtCount.Text = count;
+            txtLevel.Text = level;
+        }
+        public frmWiner()
 		{
 			InitializeComponent();
 
-			txtCount.Enabled = false;
+            txtCount.Enabled = false;
 			txtLevel.Enabled = false;
-			txtCount.Text = count;
-			txtLevel.Text = level;
 		}
+
 
 		private void btnClose_Click(object sender, EventArgs e)
 		{
@@ -62,8 +66,8 @@ namespace Picture_Puzzle_1._0
 						cmd.Connection = conn;
 						cmd.CommandType = CommandType.Text;
 						// Lệnh Insert InTo
-						cmd.CommandText = "Insert Into dbScore Values(N'" + txtName.Text.Trim() + "',N'" + txtCount.Text + "',N'" + txtLevel.Text + "')";
-						cmd.ExecuteNonQuery();
+						cmd.CommandText = "INSERT INTO DBSCORE Values(('" + tbID.Text.Trim() + "',N'" + txtName.Text.Trim() + "',N'" + txtCount.Text + "',N'" + txtLevel.Text + "')";
+                        cmd.ExecuteNonQuery();
 						//LoadData();
 						// Thông báo
 						MessageBox.Show("Đã thêm xong!");
@@ -79,9 +83,9 @@ namespace Picture_Puzzle_1._0
 			else
 			{
 				MessageBox.Show("Chưa đặt tên kìa !!!");
-				txtName.Focus();
+				tbID.Focus();
 			}
 		}
-		// _end_
-	}
+        // _end_
+    }
 }

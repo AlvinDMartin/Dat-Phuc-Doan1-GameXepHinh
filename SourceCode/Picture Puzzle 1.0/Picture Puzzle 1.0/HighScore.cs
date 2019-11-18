@@ -15,7 +15,7 @@ namespace Picture_Puzzle_1._0
 	{
 		// chuan bi cac doi tuong
 		// Chuỗi kết nối
-		string strConnectionString = @"Data Source=DESKTOP-4KL0P5K\SQLEXPRESS;" +
+		string strConnectionString = @"Data Source=ALVIND-MARTIN-P\SQLEXPRESS;" +
 		"Initial Catalog=GamePuzzle;" +
 		"Integrated Security=True";
 		// Đối tượng kết nối
