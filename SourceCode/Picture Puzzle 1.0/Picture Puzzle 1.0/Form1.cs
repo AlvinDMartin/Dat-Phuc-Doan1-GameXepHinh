@@ -82,23 +82,29 @@ namespace Picture_Puzzle_1._0
                     }
                     break;
             }
+
+            //Add Button
             myGame.Createbutton();
             Addnewbutton();
 
             //load image from FORM
-
             pnsample.BackgroundImage = orginal;
 
-            //set image for game
+            //set image for Game
             myGame.setImage(orginal);
             
+            //Cut and Add Image for Game
+            myGame.cropImageTomages(pnGame.Width, pnGame.Height);
+            Addnewimage();
+
+            //Start action Game
             foreach (Button bt in pnGame.Controls)
             {
                 bt.Enabled = true;
                 bt.Click += new EventHandler(MovePlay);
             }
-            myGame.cropImageTomages(pnGame.Width, pnGame.Height);
-            Addnewimage();
+
+            RandomGame();
         }
 
         private void Addnewimage()
@@ -109,8 +115,7 @@ namespace Picture_Puzzle_1._0
             for (int j = 0; j < (myGame.getSize() * myGame.getSize()) -1; j++)
             {
                 arr[j] = j;
-            }
-			arr = ran(arr);
+            }			
             foreach (Button b in pnGame.Controls)
             {
                 if (i < arr.Length)
@@ -121,6 +126,7 @@ namespace Picture_Puzzle_1._0
                 }
             }
 		}
+
 		private void Addnewbutton()
         {
             int[] arrr = new int[myGame.getSize()* myGame.getSize()];
@@ -130,16 +136,19 @@ namespace Picture_Puzzle_1._0
 				pnGame.Controls.Add((Button)myGame.getButton()[arrr[i]]);
             }
         }
-        private int[] ran(int[] arr)
-        {
-            Random rand = new Random();
-            arr = arr.OrderBy(x => rand.Next()).ToArray();
-            return arr;
-        }
+
+
+        //private int[] ran(int[] arr)
+        //{
+        //    Random rand = new Random();
+        //    arr = arr.OrderBy(x => rand.Next()).ToArray();
+        //    return arr;
+        //}
+
 
         private void Form1_Click(object sender, EventArgs e)
         {
-            //Button btn = sender as Button;
+
         }
 
         private bool Check()
@@ -153,6 +162,8 @@ namespace Picture_Puzzle_1._0
 			}
 			return true;
         }
+
+
 		private void exit_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Kết thúc Chương Trình", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -165,6 +176,8 @@ namespace Picture_Puzzle_1._0
                 //no code
             }
         }
+
+
         public void MovePlay(Object sender, EventArgs e)
         {
             
@@ -206,15 +219,29 @@ namespace Picture_Puzzle_1._0
         {
 			this.proBar.Increment(1);
 		}
+
 		public void swap(Button a, Button b)
 		{
 			string temp = a.Text;
 			a.Text = b.Text;
 			b.Text = temp;
+
 			Image i = a.Image;
 			a.Image = b.Image;
 			b.Image = i;
-		}
+
+            int xx1 = a.Location.X;
+            int yy1 = a.Location.Y;
+            int xx2 = b.Location.X;
+            int yy2 = b.Location.Y;
+            int p1 = xx1;
+            xx1 = xx2;
+            xx2 = p1;
+            int p2 = yy1;
+            yy1 = yy2;
+            yy2 = p2;
+
+        }
 
 		private void panel1_Paint(object sender, PaintEventArgs e)
 		{
@@ -226,11 +253,35 @@ namespace Picture_Puzzle_1._0
 			HighScore highScore = new HighScore();
 			highScore.ShowDialog();
 		}
+
         public void loadimageGame()
         {
             List<string> ListImage = new List<string>() { "anime", "anime2", "anime3" };
 
             cbimage.DataSource = ListImage;
+        }
+
+        public void RandomGame()
+        {
+            Button emply = null;
+            Button test = null;
+            foreach (Button bt in this.pnGame.Controls)
+            {
+                if (bt.Image == null)
+                {
+                    emply = bt;
+                    break;
+                }
+            }
+            if (btn.TabIndex == (emply.TabIndex - 1) ||
+                btn.TabIndex == (emply.TabIndex - myGame.getSize()) ||
+                btn.TabIndex == (emply.TabIndex + 1) ||
+                btn.TabIndex == (emply.TabIndex + myGame.getSize()))
+            {
+                swap(emply, btn);
+                countline++;                                // update late
+                labC.Text = Convert.ToString(countline);    // update late
+            }
         }
 	}
 }
