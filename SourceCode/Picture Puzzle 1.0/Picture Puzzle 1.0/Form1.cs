@@ -104,7 +104,7 @@ namespace Picture_Puzzle_1._0
                 bt.Click += new EventHandler(MovePlay);
             }
 
-            RandomGame();
+            //RandomGame();
         }
 
         private void Addnewimage()
@@ -261,27 +261,27 @@ namespace Picture_Puzzle_1._0
             cbimage.DataSource = ListImage;
         }
 
-        public void RandomGame()
-        {
-            Button emply = null;
-            Button test = null;
-            foreach (Button bt in this.pnGame.Controls)
-            {
-                if (bt.Image == null)
-                {
-                    emply = bt;
-                    break;
-                }
-            }
-            if (btn.TabIndex == (emply.TabIndex - 1) ||
-                btn.TabIndex == (emply.TabIndex - myGame.getSize()) ||
-                btn.TabIndex == (emply.TabIndex + 1) ||
-                btn.TabIndex == (emply.TabIndex + myGame.getSize()))
-            {
-                swap(emply, btn);
-                countline++;                                // update late
-                labC.Text = Convert.ToString(countline);    // update late
-            }
-        }
+        //public void RandomGame()
+        //{
+        //    Button emply = null;
+        //    Button test = null;
+        //    foreach (Button bt in this.pnGame.Controls)
+        //    {
+        //        if (bt.Image == null)
+        //        {
+        //            emply = bt;
+        //            break;
+        //        }
+        //    }
+        //    if (btn.TabIndex == (emply.TabIndex - 1) ||
+        //        btn.TabIndex == (emply.TabIndex - myGame.getSize()) ||
+        //        btn.TabIndex == (emply.TabIndex + 1) ||
+        //        btn.TabIndex == (emply.TabIndex + myGame.getSize()))
+        //    {
+        //        swap(emply, btn);
+        //        countline++;                                // update late
+        //        labC.Text = Convert.ToString(countline);    // update late
+        //    }
+        //}
 	}
 }

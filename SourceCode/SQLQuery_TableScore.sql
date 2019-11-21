@@ -12,11 +12,10 @@ use GamePuzzle;
 go
 
 create table DBSCORE
-	(	ID			varchar(5),
-		UserName	varchar(15),
+	(	UserName		varchar(15),
 		CountS		int,
-		lv			int,
-	 primary key (ID, UserName)
+		lv		int,
+	 primary key (UserName)
 	);
 
 Go
