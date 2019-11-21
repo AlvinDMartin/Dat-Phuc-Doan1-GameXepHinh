@@ -101,7 +101,7 @@
 			// Count
 			// 
 			this.Count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.Count.DataPropertyName = "Count";
+			this.Count.DataPropertyName = "CountS";
 			this.Count.HeaderText = "Count";
 			this.Count.MinimumWidth = 6;
 			this.Count.Name = "Count";
