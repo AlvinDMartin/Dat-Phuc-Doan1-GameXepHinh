@@ -12,6 +12,7 @@ use GamePuzzle;
 go
 
 create table DBSCORE
+
 	(	
 		UserName	varchar(15),
 		CountS		int,

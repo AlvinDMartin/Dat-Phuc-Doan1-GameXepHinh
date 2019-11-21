@@ -15,7 +15,7 @@ namespace Picture_Puzzle_1._0
 	{
 		// chuan bi cac doi tuong
 		// Chuỗi kết nối
-		string strConnectionString = @"Data Source=ALVIND-MARTIN-P\SQLEXPRESS;" +
+		string strConnectionString = @"Data Source=DESKTOP-4KL0P5K\SQLEXPRESS;" +
 		"Initial Catalog=GamePuzzle;" +
 		"Integrated Security=True";
 		// Đối tượng kết nối
@@ -66,8 +66,8 @@ namespace Picture_Puzzle_1._0
 						cmd.Connection = conn;
 						cmd.CommandType = CommandType.Text;
 						// Lệnh Insert InTo
-						cmd.CommandText = "INSERT INTO DBSCORE Values(('" + tbID.Text.Trim() + "',N'" + txtName.Text.Trim() + "',N'" + txtCount.Text + "',N'" + txtLevel.Text + "')";
-                        cmd.ExecuteNonQuery();
+						cmd.CommandText = "Insert Into dbScore Values(N'" + txtName.Text.Trim() + "',N'" + txtCount.Text + "',N'" + txtLevel.Text + "')";
+						cmd.ExecuteNonQuery();
 						//LoadData();
 						// Thông báo
 						MessageBox.Show("Đã thêm xong!");
@@ -83,7 +83,7 @@ namespace Picture_Puzzle_1._0
 			else
 			{
 				MessageBox.Show("Chưa đặt tên kìa !!!");
-				tbID.Focus();
+				txtName.Focus();
 			}
 		}
         // _end_

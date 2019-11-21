@@ -49,7 +49,11 @@ namespace Picture_Puzzle_1._0
             showlv.Text = "";
             labC.Text = "0";
             countline = 0;
-            this.timer1.Start();
+
+            timer2.Enabled = true;
+            timer3.Enabled = true;
+            timer4.Enabled = true;
+
             //load size
             switch (Convert.ToInt32(Box1.Text.ToString()))
             {
@@ -98,7 +102,7 @@ namespace Picture_Puzzle_1._0
             Addnewimage();
 
 
-            RandomGame();
+            //RandomGame();
 
             //Start action Game
             foreach (Button bt in pnGame.Controls)
@@ -107,7 +111,7 @@ namespace Picture_Puzzle_1._0
                 bt.Click += new EventHandler(MovePlay);
             }
 
-
+            //RandomGame();
         }
 
         private void Addnewimage()
@@ -224,7 +228,7 @@ namespace Picture_Puzzle_1._0
             }
 			if (Check() == true)
 			{
-				timer1.Stop();
+
 				MessageBox.Show("Bạn đã chiến thắng ",
 					"Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				frmWiner frmWin = new frmWiner();	// update late
@@ -232,13 +236,11 @@ namespace Picture_Puzzle_1._0
                 //labC.Text, Box1.Text
 
                 frmWin.ShowDialog();// update late
+
 			}
 		}
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-			this.proBar.Increment(1);
-		}
+
 
 		public void swap(Button a, Button b)
 		{
@@ -270,7 +272,7 @@ namespace Picture_Puzzle_1._0
 
 		private void datatable_Click(object sender, EventArgs e)
 		{
-			HighScore highScore = new HighScore();
+			PLayer highScore = new PLayer();
 			highScore.ShowDialog();
 		}
 
@@ -280,6 +282,7 @@ namespace Picture_Puzzle_1._0
 
             cbimage.DataSource = ListImage;
         }
+
 
 
         public void RandomGame()
@@ -330,5 +333,29 @@ namespace Picture_Puzzle_1._0
             }
 
         }
+
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnstartG_Click(null, null);
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            this.label3.ForeColor = Color.Red;
+            this.label4.ForeColor = Color.Red;
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            this.label3.ForeColor = Color.Yellow;
+            this.label4.ForeColor = Color.Yellow;
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            this.label3.ForeColor = Color.Blue;
+            this.label4.ForeColor = Color.Blue;
+        }
     }
+
 }

@@ -13,9 +13,9 @@ namespace Picture_Puzzle_1._0
 {
 	public partial class HighScore : Form
 	{
-		// chuan bi cac doi tuong
+		// chuan bi cac doi tuong 
 		// Chuỗi kết nối
-		string strConnectionString = @"Data Source=ALVIND-MARTIN-P\SQLEXPRESS;" +
+		string strConnectionString = @"Data Source=DESKTOP-4KL0P5K\SQLEXPRESS;" +
 		"Initial Catalog=GamePuzzle;" +
 		"Integrated Security=True";
 		// Đối tượng kết nối
