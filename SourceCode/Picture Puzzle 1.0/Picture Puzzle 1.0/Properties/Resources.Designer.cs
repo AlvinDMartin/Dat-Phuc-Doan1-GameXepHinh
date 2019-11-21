@@ -63,6 +63,16 @@ namespace Picture_Puzzle_1._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _111 {
+            get {
+                object obj = ResourceManager.GetObject("111", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap anime {
             get {
                 object obj = ResourceManager.GetObject("anime", resourceCulture);
@@ -136,6 +146,16 @@ namespace Picture_Puzzle_1._0.Properties {
         internal static System.Drawing.Bitmap br22 {
             get {
                 object obj = ResourceManager.GetObject("br22", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconBR1 {
+            get {
+                object obj = ResourceManager.GetObject("IconBR1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -53,6 +53,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pncontrol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnsample)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -60,6 +61,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnGame
@@ -241,10 +243,10 @@
             // 
             this.labC.AutoSize = true;
             this.labC.BackColor = System.Drawing.Color.Transparent;
-            this.labC.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labC.Location = new System.Drawing.Point(39, 45);
+            this.labC.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labC.Location = new System.Drawing.Point(35, 37);
             this.labC.Name = "labC";
-            this.labC.Size = new System.Drawing.Size(20, 21);
+            this.labC.Size = new System.Drawing.Size(26, 29);
             this.labC.TabIndex = 6;
             this.labC.Text = "0";
             // 
@@ -274,10 +276,10 @@
             // 
             this.showlv.AutoSize = true;
             this.showlv.BackColor = System.Drawing.Color.Transparent;
-            this.showlv.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showlv.Location = new System.Drawing.Point(29, 36);
+            this.showlv.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showlv.Location = new System.Drawing.Point(23, 30);
             this.showlv.Name = "showlv";
-            this.showlv.Size = new System.Drawing.Size(40, 21);
+            this.showlv.Size = new System.Drawing.Size(53, 29);
             this.showlv.TabIndex = 3;
             this.showlv.Text = "3x3";
             // 
@@ -299,11 +301,22 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Location = new System.Drawing.Point(13, 40);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(672, 132);
             this.panel3.TabIndex = 9;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Picture_Puzzle_1._0.Properties.Resources._111;
+            this.pictureBox2.Location = new System.Drawing.Point(5, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(150, 126);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
             // 
             // Main
             // 
@@ -336,6 +349,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,6 +380,7 @@
         private System.Windows.Forms.ComboBox cbimage;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

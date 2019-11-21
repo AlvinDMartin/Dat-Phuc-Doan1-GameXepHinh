@@ -97,6 +97,9 @@ namespace Picture_Puzzle_1._0
             myGame.cropImageTomages(pnGame.Width, pnGame.Height);
             Addnewimage();
 
+
+            RandomGame();
+
             //Start action Game
             foreach (Button bt in pnGame.Controls)
             {
@@ -104,7 +107,7 @@ namespace Picture_Puzzle_1._0
                 bt.Click += new EventHandler(MovePlay);
             }
 
-            RandomGame();
+
         }
 
         private void Addnewimage()
@@ -177,7 +180,12 @@ namespace Picture_Puzzle_1._0
             }
         }
 
+        private bool modcheck(int a, int b)
+        {
 
+            return (a % b == 0) ? true : false;
+
+        }
         public void MovePlay(Object sender, EventArgs e)
         {
             
@@ -193,15 +201,27 @@ namespace Picture_Puzzle_1._0
                     break;
                 }
             }
-            if (btn.TabIndex == (emply_btn.TabIndex - 1) ||
+            bool skip = false;
+            
+            if ((modcheck(btn.TabIndex, myGame.getSize()) && btn.TabIndex != 0 && emply_btn.TabIndex == btn.TabIndex - 1)
+                || (modcheck(btn.TabIndex + 1, myGame.getSize()) && btn.TabIndex != 0 && emply_btn.TabIndex == btn.TabIndex + 1))
+            {
+                skip = true;
+            }
+            else if (btn.TabIndex == (emply_btn.TabIndex - 1) ||
                 btn.TabIndex == (emply_btn.TabIndex - myGame.getSize()) ||
                 btn.TabIndex == (emply_btn.TabIndex + 1) ||
                 btn.TabIndex == (emply_btn.TabIndex + myGame.getSize()))
             {
-				swap(emply_btn, btn);
-				countline++;								// update late
-				labC.Text = Convert.ToString(countline);	// update late
-			}
+                if(skip != true)
+                {
+                    swap(emply_btn, btn);
+                    countline++;                                // update late
+                    labC.Text = Convert.ToString(countline);    // update late
+                    skip = false;
+                }
+                
+            }
 			if (Check() == true)
 			{
 				timer1.Stop();
@@ -226,7 +246,7 @@ namespace Picture_Puzzle_1._0
 			a.Text = b.Text;
 			b.Text = temp;
 
-			Image i = a.Image;
+            Image i = a.Image;
 			a.Image = b.Image;
 			b.Image = i;
 
@@ -261,27 +281,54 @@ namespace Picture_Puzzle_1._0
             cbimage.DataSource = ListImage;
         }
 
+
         public void RandomGame()
         {
-            Button emply = null;
-            Button test = null;
-            foreach (Button bt in this.pnGame.Controls)
+            Button emply = new Button();
+            Button test = new Button();
+
+            for (int i = 0; i < (myGame.getSize() * myGame.getSize()) - 1; i++)
             {
-                if (bt.Image == null)
+                int a = 0;
+                foreach (Button bt in this.pnGame.Controls)
                 {
-                    emply = bt;
-                    break;
+                    if (bt.Image == null)
+                    {
+                        emply = bt;
+                        if (bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 1)
+                        {
+                            a = bt.TabIndex - 1;
+                            break;
+                        }
+                        else if (bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 2)
+                        {
+                            a = bt.TabIndex - myGame.getSize();
+                            break;
+                        }
+                        else if (bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 5)
+                        {
+                            a = bt.TabIndex + 1;
+                            break;
+                        }
+                        else if (bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 4)
+                        {
+                            a = bt.TabIndex + myGame.getSize();
+                            break;
+                        }
+                        break;
+                    }
+                }
+                foreach (Button bt in this.pnGame.Controls)
+                {
+                    if (bt.TabIndex == a)
+                    {
+                        test = bt;
+                        swap(emply, test);
+                        break;
+                    }
                 }
             }
-            if (btn.TabIndex == (emply.TabIndex - 1) ||
-                btn.TabIndex == (emply.TabIndex - myGame.getSize()) ||
-                btn.TabIndex == (emply.TabIndex + 1) ||
-                btn.TabIndex == (emply.TabIndex + myGame.getSize()))
-            {
-                swap(emply, btn);
-                countline++;                                // update late
-                labC.Text = Convert.ToString(countline);    // update late
-            }
+
         }
-	}
+    }
 }
