@@ -41,7 +41,6 @@
             this.pnsample = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datatable = new System.Windows.Forms.ToolStripMenuItem();
             this.aBoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -51,6 +50,7 @@
             this.showlv = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.Sound = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -104,7 +104,6 @@
             this.cbimage.Name = "cbimage";
             this.cbimage.Size = new System.Drawing.Size(125, 28);
             this.cbimage.TabIndex = 4;
-            this.cbimage.Text = "0";
             this.cbimage.SelectedValueChanged += new System.EventHandler(this.cbimage_SelectedValueChanged);
             // 
             // label2
@@ -157,7 +156,7 @@
             this.Box1.Name = "Box1";
             this.Box1.Size = new System.Drawing.Size(50, 28);
             this.Box1.TabIndex = 2;
-            this.Box1.Text = "0";
+            this.Box1.Text = "1";
             // 
             // btnstartG
             // 
@@ -190,7 +189,6 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newGameToolStripMenuItem,
-            this.optionsToolStripMenuItem,
             this.datatable,
             this.aBoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -207,12 +205,6 @@
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.optionsToolStripMenuItem.Text = "&Options";
-            // 
             // datatable
             // 
             this.datatable.Name = "datatable";
@@ -225,6 +217,7 @@
             this.aBoutToolStripMenuItem.Name = "aBoutToolStripMenuItem";
             this.aBoutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aBoutToolStripMenuItem.Text = "&ABout";
+            this.aBoutToolStripMenuItem.Click += new System.EventHandler(this.aBoutToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -297,6 +290,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel3.Controls.Add(this.Sound);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.pictureBox2);
@@ -305,6 +299,19 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(672, 132);
             this.panel3.TabIndex = 9;
+            // 
+            // Sound
+            // 
+            this.Sound.BackColor = System.Drawing.Color.White;
+            this.Sound.BackgroundImage = global::Picture_Puzzle_1._0.Properties.Resources.logoSound;
+            this.Sound.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Sound.ForeColor = System.Drawing.Color.Black;
+            this.Sound.Location = new System.Drawing.Point(635, 90);
+            this.Sound.Name = "Sound";
+            this.Sound.Size = new System.Drawing.Size(30, 32);
+            this.Sound.TabIndex = 11;
+            this.Sound.UseVisualStyleBackColor = false;
+            this.Sound.Click += new System.EventHandler(this.Sound_Click);
             // 
             // label4
             // 
@@ -357,7 +364,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(341, 553);
+            this.label5.Location = new System.Drawing.Point(326, 550);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(335, 16);
             this.label5.TabIndex = 10;
@@ -408,7 +415,6 @@
         private System.Windows.Forms.PictureBox pnsample;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBoutToolStripMenuItem;
         private System.Windows.Forms.Button btnstartG;
         private System.Windows.Forms.Button exit;
@@ -431,6 +437,7 @@
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Timer timer4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button Sound;
     }
 }
 

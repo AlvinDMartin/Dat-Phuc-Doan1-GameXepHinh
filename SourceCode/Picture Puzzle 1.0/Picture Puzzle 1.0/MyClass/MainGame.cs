@@ -19,9 +19,10 @@ namespace Picture_Puzzle_1._0.MyClass
     {
         ArrayList m_ButtonList = new ArrayList();
         ArrayList m_ImageList = new ArrayList();
-        int m_SizeMap = 3;// default = 3x3
+        int m_SizeMap = 3; // default = 3x3
         Image m_Image;
-        
+        private int v;
+
 
         public void cropImageTomages( int w, int h)
         {
@@ -55,10 +56,11 @@ namespace Picture_Puzzle_1._0.MyClass
                     movd += h / m_SizeMap;
                 }
             }
-
+            //Panel im = Main.Instance.GetPanel();
         }
         public void Createbutton()
         {
+           
 			m_ButtonList.Clear();
             int top = 0;
             int count = 0;

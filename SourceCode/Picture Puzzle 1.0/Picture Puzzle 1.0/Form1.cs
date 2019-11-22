@@ -10,24 +10,38 @@ using System.Windows.Forms;
 using System.Collections;
 
 using Picture_Puzzle_1._0.MyClass;
+using System.Media;
 
 namespace Picture_Puzzle_1._0
 {
     public partial class Main : Form
     {
+        SoundPlayer s = new SoundPlayer(Properties.Resources.SoundG);
+        SoundPlayer sw = new SoundPlayer(Properties.Resources.SoundWin);
+        SoundPlayer sl = new SoundPlayer(Properties.Resources.SoundLose);
+
         int countline = 0;
-        MainGame myGame = new MainGame();
+        MainGame myGame;
         Image orginal;
         string extention = ".jpg";
-        
+        Button emply_btn = null;
+        int[] marker = new int[4];
+        public static Main Instance = null;// add singleton pattern to refactor code
+
         public Main()
         {
+            Instance = this;
+            myGame = new MainGame();
             InitializeComponent();
             loadimageGame();
 
         }
+        public Panel GetPanel()
+        {
+            return pnGame;
+        }
 
-        private void cbimage_SelectedValueChanged(object sender, EventArgs e)
+        private void cbimage_SelectedValueChanged(object sender, EventArgs e) //ham load background anh
         {
             ComboBox cb = sender as ComboBox;
 
@@ -45,7 +59,9 @@ namespace Picture_Puzzle_1._0
         }
         private void btnstartG_Click(object sender, EventArgs e)
         {
+            s.Play();
             pnGame.Controls.Clear();
+            Sound.BackColor = Color.LimeGreen;
             showlv.Text = "";
             labC.Text = "0";
             countline = 0;
@@ -55,18 +71,10 @@ namespace Picture_Puzzle_1._0
             timer4.Enabled = true;
 
             //load size
+
             switch (Convert.ToInt32(Box1.Text.ToString()))
             {
-                case 0:
-                    {
-                        DialogResult error1 = MessageBox.Show("Chọn Level trước khi chơi nào. (>_<)", "Bình tĩnh", MessageBoxButtons.OK, MessageBoxIcon.None);
-                        if (error1 == DialogResult.OK)
-                        {
-                            Box1.Focus();
-                            Refresh();
-                        }
-                    }
-                    break;
+
                 case 1:
                     {
                         myGame.setSize(3);
@@ -122,7 +130,8 @@ namespace Picture_Puzzle_1._0
             for (int j = 0; j < (myGame.getSize() * myGame.getSize()) -1; j++)
             {
                 arr[j] = j;
-            }			
+            }
+            arr = ran(arr);
             foreach (Button b in pnGame.Controls)
             {
                 if (i < arr.Length)
@@ -145,12 +154,12 @@ namespace Picture_Puzzle_1._0
         }
 
 
-        //private int[] ran(int[] arr)
-        //{
-        //    Random rand = new Random();
-        //    arr = arr.OrderBy(x => rand.Next()).ToArray();
-        //    return arr;
-        //}
+        private int[] ran(int[] arr)
+        {
+            Random rand = new Random();
+            arr = arr.OrderBy(x => rand.Next()).ToArray();
+            return arr;
+        }
 
 
         private void Form1_Click(object sender, EventArgs e)
@@ -196,7 +205,7 @@ namespace Picture_Puzzle_1._0
             Button btn = (Button)sender;
             if (btn.Image == null)
                 return;
-            Button emply_btn = null;
+           
             foreach (Button bt in this.pnGame.Controls)
             {
                 if (bt.Image == null)
@@ -228,9 +237,10 @@ namespace Picture_Puzzle_1._0
             }
 			if (Check() == true)
 			{
-
-				MessageBox.Show("Bạn đã chiến thắng ",
-					"Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                s.Stop();
+                sw.Play();
+				MessageBox.Show("You WIN WIN WIN !! ",
+                    "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				frmWiner frmWin = new frmWiner();	// update late
                 frmWin.CT(labC.Text, Box1.Text);
                 //labC.Text, Box1.Text
@@ -285,7 +295,7 @@ namespace Picture_Puzzle_1._0
 
 
 
-        public void RandomGame()
+        public void RandomGame()            //Mo rong chua dung den
         {
             Button emply = new Button();
             Button test = new Button();
@@ -355,6 +365,38 @@ namespace Picture_Puzzle_1._0
         {
             this.label3.ForeColor = Color.Blue;
             this.label4.ForeColor = Color.Blue;
+        }
+
+        public bool canMove(int pos)        //mo rong chua dung den
+        {
+            if (pos < 0 || pos > myGame.getSize()) return false;
+
+            return false;
+        }
+
+        private void Sound_Click(object sender, EventArgs e)
+        {
+            
+            Bitmap on = new Bitmap(Properties.Resources.logoSound);
+            Bitmap off = new Bitmap(Properties.Resources.logoSoundOff);
+            if (Sound.BackColor ==Color.LimeGreen)
+            {
+                s.Stop();
+                Sound.BackColor = Color.Red;
+                Sound.BackgroundImage = off;
+            }
+            else if (Sound.BackColor == Color.Red)
+            {
+                s.Play();
+                Sound.BackColor = Color.LimeGreen;
+                Sound.BackgroundImage = on;
+            }
+        }
+
+        private void aBoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutGame ab = new AboutGame();
+            ab.ShowDialog();
         }
     }
 
