@@ -119,7 +119,6 @@ namespace Picture_Puzzle_1._0
                 bt.Click += new EventHandler(MovePlay);
             }
 
-            //RandomGame();
         }
 
         private void Addnewimage()
@@ -182,15 +181,32 @@ namespace Picture_Puzzle_1._0
 
 		private void exit_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Kết thúc Chương Trình", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            Random rand = new Random();
+            string s = "";
+            int temp = 0;
+            int num = 10;
+            List<int> list = new List<int>();
+            for (int i = 0; i < num; i++)
             {
-                Application.Exit();
+                list.Add(i);
             }
-            else if (dialogResult == DialogResult.No)
+            //random
+            for (int i = 0; i < num; i++)
             {
-                //no code
+                temp = rand.Next(list.Count);
+                s += list[temp] + "\n";
+                list.RemoveAt(temp);
             }
+            MessageBox.Show(s);
+            //DialogResult dialogResult = MessageBox.Show("Kết thúc Chương Trình", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //    Application.Exit();
+            //}
+            //else if (dialogResult == DialogResult.No)
+            //{
+            //    //no code
+            //}
         }
 
         private bool modcheck(int a, int b)
@@ -308,22 +324,22 @@ namespace Picture_Puzzle_1._0
                     if (bt.Image == null)
                     {
                         emply = bt;
-                        if (bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 1)
+                        if (bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 1 || bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 2)
                         {
                             a = bt.TabIndex - 1;
                             break;
                         }
-                        else if (bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 2)
+                        else if (bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 3 || bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 6)
                         {
                             a = bt.TabIndex - myGame.getSize();
                             break;
                         }
-                        else if (bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 5)
+                        else if (bt.TabIndex == 0 || bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 8)
                         {
                             a = bt.TabIndex + 1;
                             break;
                         }
-                        else if (bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 4)
+                        else if (bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 7 || bt.TabIndex == (myGame.getSize() * myGame.getSize()) - 4)
                         {
                             a = bt.TabIndex + myGame.getSize();
                             break;

@@ -74,7 +74,7 @@
             this.pnGame.BackgroundImage = global::Picture_Puzzle_1._0.Properties.Resources.khung1;
             this.pnGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnGame.Location = new System.Drawing.Point(325, 178);
-            this.pnGame.Margin = new System.Windows.Forms.Padding(2);
+            this.pnGame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnGame.Name = "pnGame";
             this.pnGame.Size = new System.Drawing.Size(360, 360);
             this.pnGame.TabIndex = 0;
@@ -91,7 +91,7 @@
             this.pncontrol.Controls.Add(this.Box1);
             this.pncontrol.Controls.Add(this.btnstartG);
             this.pncontrol.Location = new System.Drawing.Point(13, 384);
-            this.pncontrol.Margin = new System.Windows.Forms.Padding(2);
+            this.pncontrol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pncontrol.Name = "pncontrol";
             this.pncontrol.Size = new System.Drawing.Size(308, 183);
             this.pncontrol.TabIndex = 1;
@@ -194,7 +194,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(697, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(721, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -237,7 +237,7 @@
             this.labC.AutoSize = true;
             this.labC.BackColor = System.Drawing.Color.Transparent;
             this.labC.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labC.Location = new System.Drawing.Point(35, 37);
+            this.labC.Location = new System.Drawing.Point(17, 37);
             this.labC.Name = "labC";
             this.labC.Size = new System.Drawing.Size(26, 29);
             this.labC.TabIndex = 6;
@@ -306,7 +306,7 @@
             this.Sound.BackgroundImage = global::Picture_Puzzle_1._0.Properties.Resources.logoSound;
             this.Sound.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Sound.ForeColor = System.Drawing.Color.Black;
-            this.Sound.Location = new System.Drawing.Point(635, 90);
+            this.Sound.Location = new System.Drawing.Point(639, 93);
             this.Sound.Name = "Sound";
             this.Sound.Size = new System.Drawing.Size(30, 32);
             this.Sound.TabIndex = 11;
@@ -375,7 +375,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Picture_Puzzle_1._0.Properties.Resources.br33;
-            this.ClientSize = new System.Drawing.Size(697, 579);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(721, 579);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -385,7 +386,7 @@
             this.Controls.Add(this.pnGame);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Main";
             this.Text = "Game Xếp Hình Anime";
             this.Load += new System.EventHandler(this.Form1_Load);
