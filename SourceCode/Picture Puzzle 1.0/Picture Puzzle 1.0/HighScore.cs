@@ -56,5 +56,53 @@ namespace Picture_Puzzle_1._0
 		{
 			this.Close();
 		}
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			// Khai báo biến traloi
+			DialogResult traloi;
+			// Hiện hộp thoại hỏi đáp
+			traloi = MessageBox.Show("Chắc chắn xóa không?", "Trả lời",
+			MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+			// Kiểm tra có nhắp chọn nút Ok không?
+			if (traloi == DialogResult.OK)
+			{
+				// Mở kết nối
+				if (conn.State == ConnectionState.Open)
+					conn.Close();
+				conn.Open();
+				try
+				{
+					// Thực hiện lệnh
+					SqlCommand cmd = new SqlCommand();
+					cmd.Connection = conn;
+					cmd.CommandType = CommandType.Text;
+					// Lấy thứ tự record hiện hành
+					int r = dGVScore.CurrentCell.RowIndex;
+					// Lấy UserName của record hiện hành
+					string strScore =
+					dGVScore.Rows[r].Cells[0].Value.ToString();
+					// Viết câu lệnh SQL
+					cmd.CommandText =
+					"Delete From DBSCORE Where UserName='"
+					+ strScore.Trim() + "'";
+					cmd.CommandType = CommandType.Text;
+					// Thực hiện câu lệnh SQL
+					cmd.ExecuteNonQuery();
+					// Cập nhật lại DataGridView
+					LoadData();
+					// Thông báo
+					MessageBox.Show("Đã xóa xong!");
+				}
+				catch (SqlException)
+				{
+					MessageBox.Show("Không xóa được. Lỗi rồi!!!");
+				}
+				finally
+				{
+					// Đóng kết nối
+					conn.Close();
+				}
+			}
+		}
 	}
 }
