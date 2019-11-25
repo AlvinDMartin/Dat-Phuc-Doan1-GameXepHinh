@@ -59,7 +59,7 @@ namespace Picture_Puzzle_1._0
         }
         private void btnstartG_Click(object sender, EventArgs e)
         {
-            s.Play();
+            s.PlayLooping();
             pnGame.Controls.Clear();
             Sound.BackColor = Color.LimeGreen;
             showlv.Text = "";
@@ -109,7 +109,7 @@ namespace Picture_Puzzle_1._0
             myGame.cropImageTomages(pnGame.Width, pnGame.Height);
             Addnewimage();
 
-
+            //Shuffle();
             //RandomGame();
 
             //Start action Game
@@ -161,9 +161,62 @@ namespace Picture_Puzzle_1._0
         }
 
 
+
+        public void Shuffle()
+        {
+            int kt = myGame.getSize() * myGame.getSize();
+            int[] arr = new int[kt - 1];
+            int q = 0;
+            int i, j, RN;
+            //int[] a = new int[kt];
+            Boolean flag = false;
+            i = 0;
+
+            for (int k = 0; k < kt - 1; k++)
+            {
+                arr[k] = k;
+            }
+
+            do
+            {
+                Random rnd = new Random();
+                RN = Convert.ToInt32((rnd.Next(0, kt-1)) + 1);
+                for (j = 0; j <= i; j++)
+                {
+                    if (arr[j] == RN)
+                    {
+                        flag = true;
+                        break;
+                    }
+
+                }
+                if (flag == true)
+                {
+                    flag = false;
+                }
+                else
+                {
+                    arr[i] = RN;
+                    i++;
+                }
+            }
+            while (i <= kt-1);
+            foreach (Button b in pnGame.Controls)
+            {
+                if (q < arr.Length)
+                {
+                    b.Image = (Image)myGame.getImages()[arr[arr[q]]];
+                    b.Text = arr[arr[q]].ToString();
+                    q++;
+                }
+            }
+        }
+
+
+
         private void Form1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private bool Check()
@@ -181,32 +234,15 @@ namespace Picture_Puzzle_1._0
 
 		private void exit_Click(object sender, EventArgs e)
         {
-            Random rand = new Random();
-            string s = "";
-            int temp = 0;
-            int num = 10;
-            List<int> list = new List<int>();
-            for (int i = 0; i < num; i++)
+            DialogResult dialogResult = MessageBox.Show("Kết thúc Chương Trình", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
             {
-                list.Add(i);
+                Application.Exit();
             }
-            //random
-            for (int i = 0; i < num; i++)
+            else if (dialogResult == DialogResult.No)
             {
-                temp = rand.Next(list.Count);
-                s += list[temp] + "\n";
-                list.RemoveAt(temp);
+                //no code
             }
-            MessageBox.Show(s);
-            //DialogResult dialogResult = MessageBox.Show("Kết thúc Chương Trình", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            //if (dialogResult == DialogResult.Yes)
-            //{
-            //    Application.Exit();
-            //}
-            //else if (dialogResult == DialogResult.No)
-            //{
-            //    //no code
-            //}
         }
 
         private bool modcheck(int a, int b)
@@ -266,9 +302,9 @@ namespace Picture_Puzzle_1._0
 			}
 		}
 
+        
 
-
-		public void swap(Button a, Button b)
+        public void swap(Button a, Button b)
 		{
 			string temp = a.Text;
 			a.Text = b.Text;
@@ -308,8 +344,6 @@ namespace Picture_Puzzle_1._0
 
             cbimage.DataSource = ListImage;
         }
-
-
 
         public void RandomGame()            //Mo rong chua dung den
         {

@@ -74,7 +74,7 @@
             this.pnGame.BackgroundImage = global::Picture_Puzzle_1._0.Properties.Resources.khung1;
             this.pnGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnGame.Location = new System.Drawing.Point(325, 178);
-            this.pnGame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnGame.Margin = new System.Windows.Forms.Padding(2);
             this.pnGame.Name = "pnGame";
             this.pnGame.Size = new System.Drawing.Size(360, 360);
             this.pnGame.TabIndex = 0;
@@ -91,7 +91,7 @@
             this.pncontrol.Controls.Add(this.Box1);
             this.pncontrol.Controls.Add(this.btnstartG);
             this.pncontrol.Location = new System.Drawing.Point(13, 384);
-            this.pncontrol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pncontrol.Margin = new System.Windows.Forms.Padding(2);
             this.pncontrol.Name = "pncontrol";
             this.pncontrol.Size = new System.Drawing.Size(308, 183);
             this.pncontrol.TabIndex = 1;
@@ -386,9 +386,9 @@
             this.Controls.Add(this.pnGame);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main";
-            this.Text = "Game Xếp Hình Anime";
+            this.Text = "Picture Puzzle 2019";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
             this.pncontrol.ResumeLayout(false);
