@@ -1,4 +1,6 @@
-﻿namespace GameXepHinh.MyForm
+﻿using System.Windows.Forms;
+
+namespace GameXepHinh.MyForm
 {
     partial class AboutGame
     {
@@ -44,7 +46,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::GameXepHinh.Properties.Resources.br33;
+            this.BackgroundImage = System.Drawing.Image.FromFile(Application.StartupPath + "//Resources//images//br33.jpg");//global::GameXepHinh.Properties.Resources.br33;
             this.ClientSize = new System.Drawing.Size(598, 450);
             this.Controls.Add(this.panelAbout);
             this.Name = "AboutGame";

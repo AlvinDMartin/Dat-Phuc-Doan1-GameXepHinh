@@ -1,4 +1,6 @@
-﻿namespace GameXepHinh.MyForm
+﻿using System.Windows.Forms;
+
+namespace GameXepHinh.MyForm
 {
     partial class ScorePlaylist
     {
@@ -145,7 +147,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::GameXepHinh.Properties.Resources.background_Fill;
+            this.BackgroundImage = System.Drawing.Image.FromFile( Application.StartupPath + "//Resources//images//background-Fill.jpg");//global::GameXepHinh.Properties.Resources.background_Fill;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(653, 438);
             this.Controls.Add(this.dGVScore);

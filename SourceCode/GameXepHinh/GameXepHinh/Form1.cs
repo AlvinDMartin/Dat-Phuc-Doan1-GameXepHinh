@@ -15,12 +15,12 @@ namespace GameXepHinh
 {
     public partial class Form1 : Form
     {
-        SoundPlayer s = new SoundPlayer(Properties.Resources.SoundG);
-        SoundPlayer sw = new SoundPlayer(Properties.Resources.SoundWin);
-        SoundPlayer sl = new SoundPlayer(Properties.Resources.SoundLose);
-        Bitmap on = new Bitmap(Properties.Resources.logoSound);
-        Bitmap off = new Bitmap(Properties.Resources.logoSoundOff);
-
+        SoundPlayer s = new SoundPlayer(Application.StartupPath + "//Resources//sounds//SoundG.wav");
+        SoundPlayer sw = new SoundPlayer(Application.StartupPath + "//Resources//sounds//SoundWin.wav");
+        SoundPlayer sl = new SoundPlayer(Application.StartupPath + "//Resources//sounds//SoundLose.wav");
+        Bitmap on = new Bitmap(Image.FromFile(Application.StartupPath + "//Resources//images//logoSound.png"));
+        Bitmap off = new Bitmap(Image.FromFile(Application.StartupPath + "//Resources//images//logoSoundOff.png"));
+       
         Image orginal;
         int countline = 0;
 
@@ -54,7 +54,6 @@ namespace GameXepHinh
         }
  
         
-
 
 //==================== BUTTON ====================================
         private void btnstartG_Click(object sender, EventArgs e)
@@ -151,18 +150,22 @@ namespace GameXepHinh
             ComboBox cb = sender as ComboBox;
             if (cb.SelectedValue != null)
             {
-                Bitmap bm = new Bitmap(Application.StartupPath + "\\Resources\\" + cb.SelectedValue.ToString() + ".jpg");
+                Bitmap bm = new Bitmap(Image.FromFile(Application.StartupPath + "\\Resources\\images\\" + cb.SelectedValue.ToString() + ".jpg"));
                 orginal = bm;
             }
         }
+        private void datatable_Click(object sender, EventArgs e)
+        {
+            Score.ShowDialog();
+        }
 
-//================================================================
+        //================================================================
 
 
 
 
 
-//=============== SET SOUND ======================================
+        //=============== SET SOUND ======================================
         private void Sound_Click(object sender, EventArgs e)
         {
 
@@ -320,10 +323,6 @@ namespace GameXepHinh
             return true;
         }
 
-        private void datatable_Click(object sender, EventArgs e)
-        {
-            Score.ShowDialog();
-        }
         //================================================================
     }
 }

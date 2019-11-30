@@ -93,18 +93,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -115,31 +115,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\br33.JPG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\br22.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\111.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BackGround-Control2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\logoSound.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SoundG.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SoundLose.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SoundWin.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\logoSoundOff.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\anime 2.jpg" />
@@ -151,10 +127,43 @@
     <None Include="Resources\anime.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\BackGround-Control2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\background-Fill.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgroundGame.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgroundGame2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\br_button.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\br_control.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\br22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\br33.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\khung1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\khung2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoSound.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoSoundOff.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /Y /S /E /D "$(ProjectDir)Resources\*.*" "$(ProjectDir)bin\$(Configuration)\Resources\"</PreBuildEvent>
+  </PropertyGroup>
 </Project>
