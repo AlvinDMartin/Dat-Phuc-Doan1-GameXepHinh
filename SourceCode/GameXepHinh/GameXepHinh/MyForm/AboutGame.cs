@@ -34,8 +34,8 @@ namespace GameXepHinh.MyForm
         private void panelAbout_Paint(object sender, PaintEventArgs e)
         {
             gp.FillRectangle(new SolidBrush(Color.FromArgb(128, 255, 162, 89)), rRect);
-            DrawText(gp, "ABOUT GAME - PICTURE PUZZLE 2019", fFont1, new SolidBrush(Color.FromArgb(255, 10, 10, 10)), new SolidBrush(Color.Chocolate), 188, 20);
-            DrawText(gp, "GAME XEP HINH - C#", fFont2, new SolidBrush(Color.FromArgb(255, 10, 10, 10)), new SolidBrush(Color.Chocolate), 188, 60);
+            DrawText(gp, "ABOUT GAME - GAME XẾP HÌNH", fFont1, new SolidBrush(Color.FromArgb(255, 10, 10, 10)), new SolidBrush(Color.Chocolate), 188, 20);
+            DrawText(gp, "XAY DUNG GAME XEP HINH - C#", fFont2, new SolidBrush(Color.FromArgb(255, 10, 10, 10)), new SolidBrush(Color.Chocolate), 188, 60);
             DrawText(gp, "HO QUOC DAT - 17110117", fFont2, new SolidBrush(Color.FromArgb(255, 10, 10, 10)), new SolidBrush(Color.Chocolate), 188, 100);
             DrawText(gp, "TRINH NGUYEN HOANG VINH PHUC - 17110208", fFont2, new SolidBrush(Color.FromArgb(255, 10, 10, 10)), new SolidBrush(Color.Chocolate), 188, 140);
             DrawText(gp, "UNIVERSITY OF TECHNOLOGY AND EDUCATION", fFont2, new SolidBrush(Color.FromArgb(255, 10, 10, 10)), new SolidBrush(Color.Chocolate), 188, 180);

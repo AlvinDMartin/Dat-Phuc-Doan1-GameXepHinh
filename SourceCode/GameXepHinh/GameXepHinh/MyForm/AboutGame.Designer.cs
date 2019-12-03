@@ -30,25 +30,29 @@ namespace GameXepHinh.MyForm
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutGame));
             this.panelAbout = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // panelAbout
             // 
             this.panelAbout.BackColor = System.Drawing.Color.Transparent;
-            this.panelAbout.Location = new System.Drawing.Point(205, 12);
+            this.panelAbout.Location = new System.Drawing.Point(273, 15);
+            this.panelAbout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelAbout.Name = "panelAbout";
-            this.panelAbout.Size = new System.Drawing.Size(391, 426);
+            this.panelAbout.Size = new System.Drawing.Size(521, 524);
             this.panelAbout.TabIndex = 1;
             this.panelAbout.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAbout_Paint);
             // 
             // AboutGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = System.Drawing.Image.FromFile(Application.StartupPath + "//Resources//images//br33.jpg");//global::GameXepHinh.Properties.Resources.br33;
-            this.ClientSize = new System.Drawing.Size(598, 450);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(797, 554);
             this.Controls.Add(this.panelAbout);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AboutGame";
             this.Text = "AboutGame";
             this.Load += new System.EventHandler(this.AboutGame_Load);
